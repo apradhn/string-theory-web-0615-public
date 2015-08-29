@@ -3,7 +3,7 @@ function sortByAppearance(charactersToSort, text) {
   var textCharacter;
   var charactersToSort = charactersToSort.split("");
   var sortCharacter;
-  sortedCharacters = [];
+  var sortedCharacters;
 
   var characters_hash = charactersToSort.map(function(elem) {
     var new_elem = {};
@@ -11,7 +11,6 @@ function sortByAppearance(charactersToSort, text) {
     new_elem.count = 0;
     return new_elem;
   });
-
 
   for (var i = 0; i < textCharacters.length; i++) {
     textCharacter = textCharacters[i]
@@ -23,13 +22,13 @@ function sortByAppearance(charactersToSort, text) {
     };
   };
 
-  characters_hash.sort(function(a, b) {
+  sortedCharacters = characters_hash.sort(function(a, b) {
     return b.count - a.count;
-  });
-
-  sortedCharacters = characters_hash.map(function(elem) {
+  })
+  .map(function(elem) {
     return elem.character;
   })
+  .join("");
 
-  return sortedCharacters.join("");
+  return sortedCharacters;
 }
